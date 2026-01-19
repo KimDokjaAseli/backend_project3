@@ -50,24 +50,24 @@ func LoadConfig() *Config {
 		apiTimeout = 30
 	}
 
-	serverHost := getEnv("SERVER_HOST", "0.0.0.0")
-	serverPort := getEnv("SERVER_PORT", "8080")
+	serverHost := getEnv("SERVER_HOST", "localhost")
+	serverPort := getEnv("SERVER_PORT", "8102")
 
 	return &Config{
 		ServerHost:         serverHost,
 		ServerPort:         serverPort,
 		ServerAddress:      serverHost + ":" + serverPort,
 		GinMode:            getEnv("GIN_MODE", "debug"),
-		DBHost:             getEnv("DB_HOST", "gateway01.ap-southeast-1.prod.aws.tidbcloud.com"),
-		DBPort:             getEnv("DB_PORT", "4000"),
-		DBUser:             getEnv("DB_USER", "3Rtj2MNUvxPhvBM.root"),
+		DBHost:             getEnv("DB_HOST", "localhost"),
+		DBPort:             getEnv("DB_PORT", "3306"),
+		DBUser:             getEnv("DB_USER", "root"),
 		DBPassword:         getEnv("DB_PASSWORD", ""),
-		DBName:             getEnv("DB_NAME", "walletpointapp_wallet_point"),
+		DBName:             getEnv("DB_NAME", "wallet_point"),
 		JWTSecret:          getEnv("JWT_SECRET", "change-this-secret-key-in-production"),
 		JWTExpiryHours:     jwtExpiry,
 		AllowedOrigins:     getEnv("ALLOWED_ORIGINS", "*"),
 		MaxUploadSize:      maxUploadSize,
-		UploadPath:         getEnv("UPLOAD_PATH", "./public/uploads"),
+		UploadPath:         getEnv("UPLOAD_PATH", "./uploads"),
 		ExternalAPITimeout: apiTimeout,
 	}
 }
