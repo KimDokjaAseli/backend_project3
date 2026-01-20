@@ -3,7 +3,6 @@ package main
 import (
 	"log"
 	"wallet-point/config"
-	"wallet-point/internal/database"
 	"wallet-point/routes"
 	"wallet-point/utils"
 
@@ -42,9 +41,6 @@ func main() {
 
 	// Connect to database
 	db := config.ConnectDB(cfg)
-
-	// Run migrations
-	database.Migrate(db)
 
 	// Initialize Gin
 	r := gin.Default()
